@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: nginx-shubhrant
+    namespace: argocd
+spec:
+    project: default
+    source:
+        repoURL: 'https://github.com/anandshbh/argo1'
+        path: orange
+        targetRevision: master
+    destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: default
+    syncPolicy:
+      automated:
+        selfHeal: true
+        prune: true
